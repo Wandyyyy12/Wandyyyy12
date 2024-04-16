@@ -1,0 +1,24 @@
+program DeretPenjumlahanMemo;
+uses Forms, StdCtrls;
+
+var
+  Form: TForm;
+  Memo: TMemo;
+  hasil: array[1..6] of integer = (1+1, 2+4, 6+2, 8+7, 15+3, 18+3);
+  i: integer;
+
+begin
+  Application.Initialize;
+  Form := TForm.Create(nil);
+  Memo := TMemo.Create(Form);
+  Memo.Parent := Form;
+  Memo.Align := alClient;
+  Form.Show;
+
+  for i := 1 to 6 do
+  begin
+    Memo.Lines.Add('(' + IntToStr(hasil[i]) + ')');
+  end;
+
+  Application.Run;
+end.
