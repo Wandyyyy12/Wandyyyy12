@@ -1,32 +1,27 @@
-program TabelPerkalianKombinasi;
-uses crt;
+program TabelPerkalianMemo;
+uses Forms, StdCtrls;
+
 var
+  Form: TForm;
+  Memo: TMemo;
   i, j: integer;
+
 begin
-  clrscr;
-  
-  // Menggunakan 'while' untuk angka 6
-  i := 6;
-  while i < 7 do
+  Application.Initialize;
+  Form := TForm.Create(nil);
+  Memo := TMemo.Create(Form);
+  Memo.Parent := Form;
+  Memo.Align := alClient;
+  Form.Show;
+
+  for i := 6 to 7 do
   begin
     for j := 0 to 6 do
     begin
-      writeln(i, ' x ', j, ' = ', i * j);
+      Memo.Lines.Add(IntToStr(i) + ' x ' + IntToStr(j) + ' = ' + IntToStr(i * j));
     end;
-    writeln('-------------------');
-    i := i + 1;
+    Memo.Lines.Add('-------------------');
   end;
 
-  // Menggunakan 'for..downto do' untuk angka 7
-  for i := 7 downto 7 do
-  begin
-    j := 0;
-    repeat
-      writeln(i, ' x ', j, ' = ', i * j);
-      j := j + 1;
-    until j > 6;
-    writeln('-------------------');
-  end;
-
-  readln;
+  Application.Run;
 end.
